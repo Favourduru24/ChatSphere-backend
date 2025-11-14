@@ -136,7 +136,7 @@ const Chat = () => {
                    </div>
                </div>
            </div>
-             
+             {/* want to make here scroll with small scroll */}
              <div className="p-10 h-full">
                <div className="h-full flex flex-col gap-5">
                {chatMessage.map((chat, index) => (
@@ -163,11 +163,12 @@ const Chat = () => {
                </div>
              </div>
              {/* The End */}
+             {/* what to make this form stick at the bottom */}
 
              <div className="p-10 h-20 border flex items-center rounded-r-md">
                <div className="flex justify-between items-center w-full">
-                  <form className="max-w-[700px] w-full border-2 border-gray-300 rounded-full flex items-center p-1">
-                 <input type="text" className="w-full  p-2" placeholder="Type Message here..."/>
+                  <form className="max-w-[700px] w-full border-2 border-gray-300 rounded-full flex items-center">
+                 <input type="text" className="w-full rounded-full p-2 outline-none" placeholder="Type Message here..."/>
                    <div className="flex p-2 gap-2">
                     <Mic className="text-[#495568] size-6 font-bold cursor-pointer"/>
                     <Image className="text-[#495568] size-6 font-bold cursor-pointer"/>
