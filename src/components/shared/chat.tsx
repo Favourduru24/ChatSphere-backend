@@ -95,7 +95,7 @@ const Chat = () => {
       </div>
 
       {/* Scrollable Chat List */}
-      <div className="flex-1 min-h-0 hover:overflow-y-auto transition-hover transition duration-700 transition-all chat-scroll">
+      <div className="flex-1 min-h-0 overflow-y-auto chat-scroll">
         <div className="flex flex-col ">
           {chatData.map((chat, index) => (
             <div
