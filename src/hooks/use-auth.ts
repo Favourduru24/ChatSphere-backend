@@ -40,8 +40,23 @@ interface AuthState {
                 set({isSigningUp: false})
             }
          },
-         login: (data: LoginType) => {},
-         logout: () => {},
+         login: async (data: LoginType) => {
+             set({isLoggingIn: true})
+
+            try {
+
+                const response = await API.post('/auth/login', data)
+                set({user: response.data.user})
+                useSocket.getState().connectSocket()
+            } catch (err: any) {
+                toast.error(err.response?.data?.message || 'LoginIn failed!')
+            } finally {
+                set({isLoggingIn: false})
+            }  
+         },
+         logout: async () => {
+             
+         },
          isAuthStatus: () => {}
        }),
        {
