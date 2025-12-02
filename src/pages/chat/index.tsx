@@ -1,7 +1,9 @@
-const Chat = () => {
+import Chat from '@/components/shared/chat'
+
+const ChatPage = () => {
   return (
-    <div>Chat</div>
+    <Chat/>
   )
 }
 
-export default Chat
+export default ChatPage
