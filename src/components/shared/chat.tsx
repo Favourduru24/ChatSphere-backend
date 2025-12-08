@@ -1,27 +1,13 @@
-import { chatData, navLink } from "@/constants"
+import { chatData, chatMessage, navLink } from "@/constants"
 import Header from "./header"
 import {Menu, Plus, Search, Phone, Mic, Image, Link2, Send} from "lucide-react"
 
 const Chat = () => {
 
-   
-
- 
-   const chatMessage = [
-    {name: 'Favour Duru', text: 'Lorem ipsum dolor, sit amet consectetur.', time: '9:53', color: 'bg-red-500'},
-          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis tempore eius, ab nulla officia minima!', time: '9:53', color: 'bg-green-500'},
-          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis tempore eius, ab nulla officia minima!', time: '9:53', color: 'bg-green-500'},
-          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur ', time: '9:53', color: 'bg-green-500', image: '/image/card2.webp'},
-          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis tempore eius, ab nulla officia minima!', time: '9:53', color: 'bg-green-500'},
-          {name: 'Duru Pristine', text: 'How should i start', time: '12:53', color: 'bg-orange-500'},
-          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur ', time: '9:53', color: 'bg-green-500', image: '/image/card2.webp'},
-   ]
-
   return (
     <div className="h-screen flex flex-col overflow-hidden">
   {/* HEADER */}
   <Header />
-
   {/* MAIN LAYOUT */}
   <div className="flex flex-1 min-h-0">
     {/* LEFT SIDEBAR */}
