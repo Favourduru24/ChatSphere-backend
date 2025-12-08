@@ -1,16 +1,8 @@
+import { navLink } from "@/constants"
 import Header from "./header"
-import {Sparkle, Calendar, Menu, Plus, Search, Phone, Mic, Image, Link2, Send} from "lucide-react"
+import {Menu, Plus, Search, Phone, Mic, Image, Link2, Send} from "lucide-react"
 
 const Chat = () => {
-
-   const navLink = [
-    {
-      icon: Calendar
-    },
-    {
-      icon: Sparkle
-    },
-   ]
 
    const chatData = [
           {name: 'Favour Duru', text: 'I have sent you the link', time: '9:53', color: 'bg-red-500', },
