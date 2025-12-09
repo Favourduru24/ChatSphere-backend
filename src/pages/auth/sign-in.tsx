@@ -31,7 +31,7 @@ const SignIn = () => {
   }
 
   return (
-    <section className="w-full flex lg:flex-row items-center justify-center h-screen gap-5 px-5">
+    <section className="w-full flex lg:flex-row items-center justify-center h-screen gap-5 px-5 ">
       {/* Form Container */}
       <div className="w-full max-w-lg flex flex-col gap-6 py-6 bg-white border border-[#ebeeed] rounded-xl shadow-sm p-2 justify-center">
         {/* Logo & Title */}
