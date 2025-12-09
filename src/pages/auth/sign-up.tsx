@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 
 const SignUp = () => {
 
+  
+
   return (
     <section className="w-full flex lg:flex-row items-center justify-center h-screen gap-5 px-5">
             

@@ -80,6 +80,6 @@ interface AuthState {
          }
        }),
        {
-         name: 'whop:root'
+         name: 'auth-storage'
        }
     ))
