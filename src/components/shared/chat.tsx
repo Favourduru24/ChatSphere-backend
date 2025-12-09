@@ -1,13 +1,23 @@
 import { chatData, chatMessage, navLink } from "@/constants"
 import Header from "./header"
-import {Menu, Plus, Search, Phone, Mic, Image, Link2, Send, PenBox} from "lucide-react"
-import { useState } from "react"
+import {Plus, Search, Phone, Mic, Image, Link2, Send, PenBox} from "lucide-react"
+import { useEffect, useRef, useState} from "react"
 
 const Chat = () => {
 
-   const [open, setOpen] = useState(true)
+   const [open, setOpen] = useState(false)
+   const chatModalRef = useRef(null)
 
-  
+    useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (chatModalRef.current && !chatModalRef.current.contains(e.target)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
@@ -42,12 +52,12 @@ const Chat = () => {
     </div>
 
     {/* MIDDLE CHAT LIST */}
-    <div className="max-w-[340px] w-full flex flex-col bg-[#F9FBFC] border hidden lg:flex relative">
+    <div className="max-w-[350px] w-full flex flex-col bg-[#F9FBFC] border hidden lg:flex relative">
       {/* Title */}
       <div className="p-2 h-16 border flex items-center">
         <div className="flex justify-between items-center w-full">
           <p className="text-xl font-semibold">chatSphere</p>
-          <PenBox className="text-[#495568] size-5 cursor-pointer" />
+          <PenBox className="text-[#495568] size-5 cursor-pointer" onClick={() => setOpen(!open)}/>
         </div>
       </div>
 
@@ -63,8 +73,8 @@ const Chat = () => {
           <Plus className="text-[#495568] size-7 cursor-pointer" />
         </div>
 
-         {open && (
-            <div className=" absolute left-[50%] max-w-[300px] w-full flex flex-col bg-[#F9FBFC] border lg:flex  h-[70vh]">
+         {open ? (
+            <div className="absolute left-[50%] top-20 max-w-[350px] w-full flex flex-col bg-[#F9FBFC] BACK border lg:flex  h-[85vh] z-10 rounded-lg" ref={chatModalRef}>
              <div className="flex-1 min-h-0 overflow-y-auto chat-scroll">
         <div className="flex flex-col ">
           {chatData.map((chat, index) => (
@@ -83,7 +93,6 @@ const Chat = () => {
                     </div>
                   </div>
 
-                  <p className="text-xs text-[#CCCFD9]">{chat.time}</p>
                 </div>
               </div>
             </div>
@@ -91,7 +100,7 @@ const Chat = () => {
         </div>
       </div>
             </div>
-         )}
+         ): ''}
       </div>
 
       {/* Scrollable Chat List */}
