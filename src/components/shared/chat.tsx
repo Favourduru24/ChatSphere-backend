@@ -19,6 +19,15 @@ const Chat = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+
+   const handleToggle = () => {
+     if(chatModalRef.current){
+       setOpen(false)
+     } else{
+       setOpen(true)
+     }
+   } 
+
   return (
     <div className="h-screen flex flex-col overflow-hidden">
   {/* HEADER */}
