@@ -83,7 +83,11 @@ const Chat = () => {
         </div>
 
          {open ? (
-            <div className="absolute left-[50%] top-20 max-w-[350px] w-full flex flex-col bg-[#F9FBFC] BACK border lg:flex  h-[85vh] z-10 rounded-lg" ref={chatModalRef}>
+            <div className="absolute left-[50%] top-20 max-w-[350px] w-full bg-[#F9FBFC] border flex flex-col z-10 rounded-t-lg min-h-0 h-[80vh]" ref={chatModalRef}>
+                <div className="px-11">
+                <input type="text" className="w-full h-8 m"/>
+                  
+                </div>
              <div className="flex-1 min-h-0 overflow-y-auto chat-scroll">
         <div className="flex flex-col ">
           {chatData.map((chat, index) => (
