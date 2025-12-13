@@ -1,16 +1,17 @@
 import { chatData, chatMessage, navLink } from "@/constants"
 import Header from "./header"
-import {Plus, Search, Phone, Mic, Image, Link2, Send, PenBox, User2, User2Icon, Users2Icon, Users, ArrowLeft} from "lucide-react"
+import {Plus, Search, Phone, Mic, Image, Link2, Send, PenBox, Users2Icon, ArrowLeft, Camera} from "lucide-react"
 import { useEffect, useRef, useState} from "react"
 
 const Chat = () => {
 
    const [open, setOpen] = useState(false)
    const [isGroupOpen, setIsGroupOpen] = useState(false)
-   const chatModalRef = useRef(null)
+   const [createGroupModal, setCreateGroupModal] = useState(false)
+   const chatModalRef = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
-    const handleClickOutside = (e) => {
+    const handleClickOutside = (e: MouseEvent) => {
       if (chatModalRef.current && !chatModalRef.current.contains(e.target)) {
         setOpen(false)
       }
@@ -22,6 +23,7 @@ const Chat = () => {
 
      
    const toggleOpen = () => setOpen((p) => !p);
+   const toggleCreateGroup = () => setCreateGroupModal((p) => !p);
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
@@ -56,7 +58,7 @@ const Chat = () => {
     </div>
 
     {/* MIDDLE CHAT LIST */}
-    <div className="max-w-[350px] w-full flex flex-col bg-[#F9FBFC] border hidden lg:flex relative">
+    <div className="max-w-[350px] w-full flex-col bg-[#F9FBFC] border hidden lg:flex relative">
       {/* Title */}
       <div className="px-4 py-3 border-b flex items-center justify-between">
                   <div>
@@ -83,7 +85,7 @@ const Chat = () => {
   >
     {/* GROUP MODAL */}
     {isGroupOpen && (
-      <div className="absolute inset-0 bg-white flex flex-col min-h-0">
+      <div className="absolute inset-0 bg-white flex flex-col min-h-0 rounded-lg">
         
         {/* Header */}
          <div className="px-3 py-3 border-b flex items-center gap-3">
@@ -109,7 +111,7 @@ const Chat = () => {
                 <div className="w-full p-4">
                   <div className="flex justify-between items-center">
                     <div className="flex gap-4 items-center">
-                      <div className={`flex-shrink-0 w-12 h-12 rounded-full ${chat.color} flex items-center justify-center`}/>
+                      <div className={`shrink-0 w-12 h-12 rounded-full ${chat.color} flex items-center justify-center`}/>
                       <div>
                         <p className="text-sm font-semibold truncate">{chat.name}</p>
                         <p className="text-xs text-[#8B92A1]">{chat.text}</p>
@@ -122,13 +124,48 @@ const Chat = () => {
             ))}
           </div>
         </div>
-        <div className="p-3 border-t">
-                      <button className="w-full py-2 bg-purple-600 text-white rounded-md font-semibold cursor-pointer">Create Group</button>
+        <div className="p-3 border-t flex gap-2 items-center justify-between">
+                      <button className="w-full py-2 bg-purple-600 text-white rounded-md font-semibold cursor-pointer" onClick={toggleCreateGroup}>Next</button>
+
+                      <button className="w-full py-2 bg-[#e6eaec] text-black rounded-md font-semibold cursor-pointer" onClick={() => setIsGroupOpen(false)}>Cancel</button>
                     </div>
                   </div>
-      // </div>
+       
     )}
+           {createGroupModal && ( <div className="absolute inset-0 bg-white flex flex-col min-h-0 rounded-lg">
+            <div className="px-3 py-3 border-b flex items-center gap-3">
+          <button onClick={toggleCreateGroup} className="p-2 rounded-md hover:bg-slate-100">
+            <ArrowLeft className="size-5" />
+            </button>
+          <h3 className="text-lg font-semibold">New group</h3>
+           </div>
+                <div className="h-full flex flex-col justify-between">
+                  <div className="flex flex-col">
 
+             <div className="flex items-center w-full px-4 py-5 gap-2 ">
+                   <div className="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100">
+                     <Camera className="size-4"/>
+                   </div>
+                     <p className="text-sm">Add a group icon <span className="text-gray-400">(optional)</span></p>
+             </div>
+                  
+              <div className="flex flex-col w-full px-4 gap-2 ">
+                     <p className="text-sm">Provide a group name</p>
+
+                       <form className="border-b-2 border-[#8E8AD8] mb-3 rounded-sm">
+                        <input className="w-full h-9 outline-none px-2 bg-[#EDF2FE] rounded-sm" placeholder="Group name (optional)" />
+                      </form>
+                  </div>
+
+                   
+              </div>
+               <div className="p-3 border-t flex gap-2 items-center justify-between">
+                      <button className="w-full py-2 bg-purple-600 text-white rounded-md font-semibold cursor-pointer">Create</button>
+
+                      <button className="w-full py-2 bg-[#e6eaec] text-black rounded-md font-semibold cursor-pointer" onClick={toggleCreateGroup}>Cancel</button>
+                    </div>
+                </div>
+           </div>)}
     {/* MAIN CHAT SCREEN */}
     <div className="flex flex-col min-h-0 h-full">
 
@@ -193,7 +230,7 @@ const Chat = () => {
               <div className="w-full p-4">
                 <div className="flex justify-between">
                   <div className="flex gap-4 items-center">
-                    <div className={`flex-shrink-0 w-12 h-12 rounded-full ${chat.color} flex items-center justify-center`}></div>
+                    <div className={`shrink-0 w-12 h-12 rounded-full ${chat.color} flex items-center justify-center`}></div>
 
                     <div className="flex flex-col gap-1">
                       <p className="text-sm font-semibold truncate">{chat.name}</p>
