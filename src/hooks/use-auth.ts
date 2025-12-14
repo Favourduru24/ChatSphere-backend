@@ -11,8 +11,8 @@ interface AuthState {
     isSigningUp: boolean
     isAuthStateLoading: boolean
 
-    register: (data: RegisterType) => void
-    login: (data: LoginType) => void
+    register: (data: RegisterType) => Promise<boolean>;
+    login: (data: LoginType) => Promise<boolean>
     logout: () => void,
     isAuthStatus: () => void
 } 
@@ -26,20 +26,24 @@ interface AuthState {
          isLoggingIn: false,
          isAuthStateLoading: false,
          
-         register: async (data: RegisterType) => {
-            set({isSigningUp: true})
+                register: async (data: RegisterType) => {
+        set({ isSigningUp: true });
 
-            try {
+ 
+        try {
+            const response = await API.post('/auth/register', data);
+            set({ user: response.data.user });
 
-                const response = await API.post('/auth/register', data)
-                set({user: response.data.user})
-                useSocket.getState().connectSocket()
-            } catch (err: any) {
-                toast.error(err.response?.data?.message || 'Registration failed!')
-            } finally {
-                set({isSigningUp: false})
-            }
-         },
+            useSocket.getState().connectSocket();
+
+            return true;  
+        } catch (err: any) {
+            toast.error(err.response?.data?.message || 'Registration failed!');
+            return false;  
+        } finally {
+            set({ isSigningUp: false });
+        }
+        },
          login: async (data: LoginType) => {
              set({isLoggingIn: true})
 
@@ -47,8 +51,10 @@ interface AuthState {
                 const response = await API.post('/auth/login', data)
                 set({user: response.data.user})
                 useSocket.getState().connectSocket()
+                return true
             } catch (err: any) {
                 toast.error(err.response?.data?.message || 'LoginIn failed!')
+                return false
             } finally {
                 set({isLoggingIn: false})
             }  

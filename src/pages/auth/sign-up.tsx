@@ -5,9 +5,11 @@ import { useEffect, useState } from "react"
 import { toast } from "sonner"
 import type { RegisterType } from "@/types/auth.type"
 import { Loader2 } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 const SignUp = () => {
   const { register, isSigningUp } = useAuth()
+  const navigate = useNavigate()
 
   const [name, setName] = useState('')
   const [avatar, setAvatar] = useState('')
@@ -21,19 +23,26 @@ const SignUp = () => {
     avatar: z.string()
   })
 
-  const handleSignUp = () => {
-    const result = formSchema.safeParse({ email, password, name, avatar})
+  const handleSignUp = async () => {
+  const result = formSchema.safeParse({ email, password, name, avatar });
 
-    if (!result.success) {
-      const errorMessages = result.error.issues.map(issue => issue.message).join(", ")
-      toast.error(errorMessages)
-      return
-    }
-
-    const data: RegisterType = result.data
-    register(data)
+  if (!result.success) {
+    const errorMessages = result.error.issues
+      .map(issue => issue.message)
+      .join(", ");
+     toast.error(errorMessages);
+    return;
   }
 
+  const data: RegisterType = result.data;
+
+  const success = await register(data);
+
+  if (success) {
+    navigate("/");
+    toast.success("Account created!");
+  }
+    };
   return (
     <section className="w-full flex lg:flex-row items-center justify-center h-screen gap-5 px-5 ">
       {/* Form Container */}
@@ -131,11 +140,11 @@ const SignUp = () => {
       </div>
 
       {/* Image Section */}
-      <div className="w-full h-full bg-purple-50 hidden lg:block">
+      <div className="w-full h-full bg-purple-50 hidde lg:block px-10 pt-28 flex items-center justify-center">
         <img
-          src="/image/auth.png"
+          src="/image/sign-in.svg"
           alt="Authentication Illustration"
-          className="w-full h-full object-cover"
+          className=" object-contain w-full h-[70vh]"
         />
       </div>
     </section>

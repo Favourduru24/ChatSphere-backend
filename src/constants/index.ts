@@ -1,11 +1,11 @@
-import { Calendar, Sparkle } from "lucide-react";
+import { Calendar, Search, Sparkle } from "lucide-react";
 
  export const navLink = [
     {
       icon: Calendar
     },
     {
-      icon: Sparkle
+      icon: Search
     },
    ]
 
@@ -26,10 +26,10 @@ import { Calendar, Sparkle } from "lucide-react";
 
      export const chatMessage = [
     {name: 'Favour Duru', text: 'Lorem ipsum dolor, sit amet consectetur.', time: '9:53', color: 'bg-red-500'},
-          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis tempore eius, ab nulla officia minima!', time: '9:53', color: 'bg-green-500'},
+          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis tempore eius, ab nulla officia minima! ❤️', time: '9:53', color: 'bg-green-500'},
           {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis tempore eius, ab nulla officia minima!', time: '9:53', color: 'bg-green-500'},
           {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur ', time: '9:53', color: 'bg-green-500', image: '/image/card2.webp'},
           {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis tempore eius, ab nulla officia minima!', time: '9:53', color: 'bg-green-500'},
           {name: 'Duru Pristine', text: 'How should i start', time: '12:53', color: 'bg-orange-500'},
-          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur ', time: '9:53', color: 'bg-green-500', image: '/image/card2.webp'},
+          {name: 'Kelvin Kart', text: 'Lorem ipsum dolor, sit amet consectetur ❤️', time: '9:53', color: 'bg-green-500', image: '/image/card2.webp'},
    ]
