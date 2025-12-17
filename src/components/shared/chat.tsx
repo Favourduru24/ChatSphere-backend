@@ -12,7 +12,6 @@ const Chat = () => {
 
    {/* HEADER */}
    <Header/>
-
   {/* MAIN LAYOUT */}
   <div className="flex flex-1 min-h-0">
 

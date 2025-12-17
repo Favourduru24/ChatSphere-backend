@@ -13,7 +13,6 @@ const ChatList = ({chat, onClick, currentUserId}: PropsType) => {
 
     const {pathname} = useLocation()
 
-    
 
     const {lastMessage, createdAt, createdBy} = chat || {}
 

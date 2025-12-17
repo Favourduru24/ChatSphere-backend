@@ -32,7 +32,7 @@ export const protectedRoutesPaths = [
         element: <Chat/>
     },
     {
-        path: AUTH_ROUTES.SING_UP,
+        path: PROTECTED_ROUTES.SINGLE_CHAT,
         element: <SingleChat/>
     }
 

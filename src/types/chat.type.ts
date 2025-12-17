@@ -24,9 +24,9 @@ export type ChatType = {
 }
 
 export type CreateChatType = {
-    participantId: string
+    participantId?: string
     isGroup?: boolean
-    participants: string[]
+    participants?: string[]
     groupName?: string
 }
 
