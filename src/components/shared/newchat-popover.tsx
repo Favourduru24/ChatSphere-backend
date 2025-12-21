@@ -45,7 +45,7 @@ const NewChat = ({
      fetchAllUser()
   }, [fetchAllUser]);
 
-  console.log('allUser', users)
+  console.log('allUser wow', users)
 
   const toggleUserSelection = (id: string) => {
     setSelectedUser(prev =>
@@ -53,7 +53,7 @@ const NewChat = ({
     );
   };
 
-  const filteredUsers = userData.filter(u =>
+  const filteredUsers = users.filter(u =>
     u.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 

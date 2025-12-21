@@ -1,5 +1,5 @@
 import { useAuth } from "@/hooks/use-auth";
-import { getOtherUserAndGroup } from "@/lib/utils";
+import { getOtherUserAndGroup, formatCustomDate } from "@/lib/utils";
 import type { ChatType } from "@/types/chat.type"
 
  interface PropsType {
@@ -35,7 +35,7 @@ const getLastMessage = () =>  {
               className="h-20 flex items-center cursor-pointer hover:bg-[#EDF2FE]"
             onClick={onClick}>
               <div className="w-full p-4">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-start">
                   <div className="flex gap-4 items-center">
                     <div className={`shrink-0 w-12 h-12 rounded-full ${`bg-amber-100`} flex items-center justify-center`}>
 
@@ -47,7 +47,7 @@ const getLastMessage = () =>  {
                     </div>
                   </div>
 
-                  <p className="text-xs text-[#CCCFD9]">{createdAt}</p>
+                  <p className="text-xs text-[#CCCFD9]">{formatCustomDate(createdAt)}</p>
                 </div>
               </div>
             </div>

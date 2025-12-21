@@ -42,7 +42,8 @@ interface ChatState {
 
           try {
             const {data} = await API.get("/user/all")
-            set({users: data.user})
+            set({users: data.users})
+
           } catch (error: any) {
              toast.error(error?.response?.data?.message || 'Failed to fetch users')
           } finally {

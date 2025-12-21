@@ -118,12 +118,12 @@ const SideBarWrapper = () => {
             <div className="flex items-center justify-center w-full h-full">
               <Loader2 className="size-10 animate-spin text-gray-400" />
             </div>
-          ) : chaty?.length === 0 ? (
+          ) : chats?.length === 0 ? (
             <div className="flex items-center justify-center w-full h-full">
               <p className="text-sm font-semibold">No chats found!</p>
             </div>
           ) : (
-            chaty?.map(chat => (
+            chats?.map(chat => (
               <ChatList key={chat._id} chat={chat} onClick={() => onRoute(chat._id)} currentUserId={currentUserId} />
             ))
           )}

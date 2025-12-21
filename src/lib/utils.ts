@@ -49,6 +49,15 @@ export const getOtherUserAndGroup = (chat: ChatType, currentUserId: string | nul
      }
 }
 
-export const formatChatTime = (date: string | Date) => {
- return date
- }
+export const formatCustomDate = (isoDate: string): string => {
+  const date = new Date(isoDate);
+  const day = date.getUTCDate().toString().padStart(2, "0");
+  const month = date.toLocaleString("en-US", { month: "short", timeZone: "UTC" });
+  const year = date.getUTCFullYear();
+  let hours = date.getUTCHours();
+  const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
+  return `${hours}:${minutes} ${ampm}`;
+  // ${day} ${month} ${year},
+}
