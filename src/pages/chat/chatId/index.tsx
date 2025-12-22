@@ -21,7 +21,7 @@ const SingleChat = () => {
 
   const currentUser = user?._id || null
   const chat = singleChat?.chat
-  const messages = singleChat?.message || []
+  const messages = singleChat?.messages || []
 
   const {name, subheading, avatar, isOnline, isGroup} = getOtherUserAndGroup(chat, currentUser)
 
@@ -58,10 +58,10 @@ const SingleChat = () => {
   //   )
   //  }
 
-   console.log('Chat-id', chatId)
-   console.log('Chat-message', messages)
-   console.log('Chat', chat)
-   console.log('isOnline', isOnline)
+  //  console.log('Chat-id', chatId)
+  //  console.log('Chat-message', messages)
+  //  console.log('Chat', chat)
+  //  console.log('isOnline', isOnline)
     
   return (
     <div className="flex flex-col h-full min-h-0">

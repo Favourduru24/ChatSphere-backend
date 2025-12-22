@@ -9,7 +9,7 @@ interface ChatState {
      users: UserType[]
      singleChat: {
         chat: ChatType
-        message: MessageType[]
+        messages: MessageType[]
      } | null
 
       isChatLoading: boolean
@@ -130,7 +130,7 @@ interface ChatState {
          set({
              singleChat: {
                chat: chat.chat,
-               message: [...chat.message, message]
+               messages: [...chat.messages, message]
              }
          })
        }

@@ -15,6 +15,8 @@ const SideBarWrapper = () => {
   const {socket} = useSocket()
 
   const currentUserId = user?._id ?? "";
+  const currentUserName = user?.name ?? "";
+
   const navigate = useNavigate();
 
   const onRoute = (id: string) => navigate(`/chat/${id}`);
@@ -76,13 +78,14 @@ const SideBarWrapper = () => {
         }
       }, [socket, updateChatLastMessage])
 
-      console.log(chats, 'Chat-Data')
+      // console.log(chats, 'Chat-Data')
+      console.log(document.cookie)
 
   return (
     <div className="max-w-[350px] w-full flex-col bg-[#F9FBFC] border-r border-t hidden lg:flex relative flex-1 min-h-0">
       <div className="px-4 py-3 border-b flex items-center justify-between">
         <div>
-          <p className="text-lg font-semibold">chatSphere</p>
+          <p className="text-lg font-semibold">chatSphere {currentUserName}</p>
           <p className="text-sm text-slate-400">Recent conversations</p>
         </div>
         <PenBox className="size-5 text-slate-600 cursor-pointer" onClick={toggleOpen} />

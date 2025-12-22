@@ -23,6 +23,7 @@ const BASE_URL = import.meta.env.MODE === 'development' ?
 
           const newSocket = io(BASE_URL, {
             withCredentials: true,
+            transports: ["websocket", "polling"],
             autoConnect: true
           })
 

@@ -45,7 +45,7 @@ const NewChat = ({
      fetchAllUser()
   }, [fetchAllUser]);
 
-  console.log('allUser wow', users)
+  // console.log('allUser wow', users)
 
   const toggleUserSelection = (id: string) => {
     setSelectedUser(prev =>
@@ -121,8 +121,8 @@ const NewChat = ({
                     <input
                       type="checkbox"
                       className="size-3 accent-purple-300"
-                      checked={selectedUser.includes(user.id)}
-                      onChange={() => toggleUserSelection(user.id)}
+                      checked={selectedUser.includes(user._id)}
+                      onChange={() => toggleUserSelection(user._id)}
                     />
                   </label>
                 ))}
@@ -206,8 +206,8 @@ const NewChat = ({
                             </div>
                           ) : filteredUsers.map(user => (
                   <div
-                    key={user.id}
-                    onClick={() => handleCreateChat(user.id)}
+                    key={user._id}
+                    onClick={() => handleCreateChat(user._id)}
                     className="flex px-4 py-3 items-center gap-3 cursor-pointer hover:bg-gray-50 justify-between"
                   >
                      <div className="flex gap-2 justify-between items-center">
@@ -218,7 +218,7 @@ const NewChat = ({
                      </div>
                      </div>
                     
-                     {loadingUserId?.includes(user.id) && <Loader2 className="size-4 text-gray-500 animate-spin"/>}
+                     {loadingUserId?.includes(user._id) && <Loader2 className="size-4 text-gray-500 animate-spin"/>}
                   </div>
                 ))}
               </div>
