@@ -90,7 +90,7 @@ const NewChat = ({
           {isGroupOpen && (
             <div className="absolute inset-0 bg-white flex flex-col min-h-0 rounded-lg">
               <div className="px-3 py-3 border-b flex items-center gap-3">
-                <button onClick={() => setIsGroupOpen(false)} className="p-2">
+                <button onClick={() => setIsGroupOpen(false)} className="p-2 hover:bg-slate-100 rounded-md">
                   <ArrowLeft className="size-5" />
                 </button>
                 <h3 className="text-lg font-semibold">Select members ({selectedUser?.length})</h3>
@@ -150,7 +150,7 @@ const NewChat = ({
             <div className="absolute inset-0 bg-white flex flex-col rounded-lg">
               <div className="px-4 py-3 border-b flex gap-3 items-center">
                 <button onClick={toggleCreateGroup}>
-                  <ArrowLeft className="size-5" />
+                  <ArrowLeft className="size-5 " />
                 </button>
                 <h3 className="text-lg font-semibold">Group name</h3>
               </div>
@@ -181,7 +181,7 @@ const NewChat = ({
             <>
               <div className="px-4 py-3 border-b flex justify-between items-center">
                 <h2 className="text-lg font-semibold">New Chat</h2>
-                <button onClick={() => setIsGroupOpen(true)}>
+                <button onClick={() => setIsGroupOpen(true)} className='p-2 rounded-md hover:bg-slate-100'>
                   <Users2Icon className="size-5" />
                 </button>
               </div>

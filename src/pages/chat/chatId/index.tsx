@@ -1,4 +1,5 @@
 import ChatBody from "@/components/shared/chat-body"
+import ChatFooter from "@/components/shared/chat-footer"
 import EmptyState from "@/components/shared/empty-state"
 import {chatMessage} from "@/constants"
 import { useAuth } from "@/hooks/use-auth"
@@ -61,7 +62,8 @@ const SingleChat = () => {
   //  console.log('Chat-id', chatId)
   //  console.log('Chat-message', messages)
   //  console.log('Chat', chat)
-  //  console.log('isOnline', isOnline)
+   console.log('isOnline', isOnline)
+   console.log('singleChat', chat)
     
   return (
     <div className="flex flex-col h-full min-h-0">
@@ -101,30 +103,15 @@ const SingleChat = () => {
       </div>
 
       {/* SCROLLABLE MESSAGES */}
-       <ChatBody chatMessage={chatMessage} chatId={chatId} onReply={setReplyTo}/>
+       <ChatBody chatMessage={messages} chatId={chatId} onReply={setReplyTo}/>
 
       {/* INPUT BAR */}
-      <div className="sm:h-20 h-16 flex items-center sticky bottom-0 bg-white sm:p-8 p-5">
-        <div className="flex items-center w-full gap-2">
-          <form className="flex-1 flex items-center gap-3 border rounded-full">
-            <input
-              type="text"
-              placeholder="Type Message here..."
-              className="w-full rounded-full p-2 outline-none text-gray-500"
-            />
-
-            <div className="flex gap-2 p-2">
-              <Mic className="text-[#495568] size-6 cursor-pointer" />
-              <Image className="text-[#495568] size-6 cursor-pointer" />
-              <Link2 className="text-[#495568] size-6 rotate-90 cursor-pointer" />
-            </div>
-          </form>
-
-          <button className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white shadow">
-            <Send className="size-5" />
-               </button>
-        </div>
-      </div>
+      <ChatFooter 
+       replyTo={replyTo}
+       chatId={chatId}
+       currentUserId={currentUser}
+       onCancelReply={() => setReplyTo(null)}
+      />
     </div>
   </div>
 </div>

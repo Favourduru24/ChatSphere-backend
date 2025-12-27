@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import axios from "axios"
+import {v4 as uuidv4} from "uuid"
 import type { ChatType } from "@/types/chat.type"
 import { useSocket } from "@/hooks/use-socket"
 
@@ -22,7 +23,7 @@ export const API = axios.create({
 };
 
 export const getOtherUserAndGroup = (
-  chat: ChatType,
+  chat: ChatType | undefined,
   currentUserId: string | null
 ) => {
   const isGroup = chat?.isGroup;
@@ -37,7 +38,10 @@ export const getOtherUserAndGroup = (
   }
 
   const other = chat?.participants.find((p) => p._id !== currentUserId);
+  const otherName = chat?.participants.map((p) => p.name);
   const isOnline = isUserOnline(other?._id ?? "");
+
+  console.log('Where online', otherName)
 
   return {
     name: other?.name || "Unknown",
@@ -60,4 +64,8 @@ export const formatCustomDate = (isoDate: string): string => {
   hours = hours % 12 || 12;
   return `${hours}:${minutes} ${ampm}`;
   // ${day} ${month} ${year},
+}
+
+export function generateUUID(): string {
+  return uuidv4()
 }
